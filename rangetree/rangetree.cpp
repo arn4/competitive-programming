@@ -39,9 +39,9 @@ template <
 class RangeTree {
   private:
     typedef typename vector<type_query>::size_type size_type; // It's assumed that it coincide with: vector<type_update>::size_type size_type
-    size_type sz; // Size of the array (NOT the size of tree)
+    size_type sz; // ize of the array 
     vector <type_query> tree; // 0 based segment-tree
-    vector <type_update> lazy; // ausialr tree for lazy propagation
+    vector <type_update> lazy; // ausialiar tree for lazy propagation
 
     // Functions for moving between nodes
     inline size_type left(size_type i) {
@@ -129,7 +129,7 @@ class RangeTree {
     // Build the segment tree given 0-indexed initial
     RangeTree(const vector<type_query> &initial) {
       sz = initial.size();
-      tree.assign(4*initial.size(), update_identity);
+      tree.assign(4*initial.size(), query_identity);
       lazy.assign(4*initial.size(), update_identity);
 
       build(0, 0, sz - 1, initial);
@@ -144,9 +144,12 @@ class RangeTree {
     }
 };
 
-/*
- * Specific Problems
- */
+
+
+/*********************
+ * Specific Problems *
+ *********************/
+
 template <typename integer_type>
 inline integer_type sum(const integer_type &a, const integer_type &b) {
   return a + b;
