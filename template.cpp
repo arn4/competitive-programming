@@ -7,7 +7,7 @@ using namespace std;
 /* DEBUG UTILITIES */
 // outstream operator for pair
 template <typename type_first, typename type_second>
-ostream &operator << (ostream &out, const pair<type_first, type_second> P) {
+ostream& operator << (ostream &out, const pair<type_first, type_second> P) {
   out << '{' << P.first << ',' << P.second << '}';
   return out;
 }
@@ -29,10 +29,15 @@ string ite2string(type_iterator begin, type_iterator end) {
   return ans + ']';
 }
 
+template <class stream, class iterable, class begin = decltype(begin(declval<iterable>()))>
+stream& operator << (stream& out, const iterable I) {
+  out << ite2string(I.begin(), I.end());
+  return out;
+}
+
 #if DEBUG
   #define dbg_var(x) clog << #x << ": " << x << endl;
   #define dbg_arr(x, len) clog << #x << ": " << ite2string(x, x + len) << endl;
-  #define dbg_ite(x) clog << #x << ": " << ite2string(x.begin(), x.end()) << endl;
   #define dbg_msg(x) clog << x << endl;
   ifstream input_from_file("input.txt");
   ofstream output_on_file("output.txt");
@@ -49,6 +54,7 @@ string ite2string(type_iterator begin, type_iterator end) {
 
 /* SHORTCUTS */
 #define forn(i, n) for (unsigned int i = 0; i < (unsigned int)(n); i++)
+#define load(V) for (auto &v: V) {cin >> v;}
 #define pb(a) push_back(a)
 #define all(a) (a).begin(), (a).end()
 #define st first
