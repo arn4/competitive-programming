@@ -44,15 +44,15 @@ class RangeTree {
     vector <type_update> lazy; // ausialiar tree for lazy propagation
 
     // Functions for moving between nodes
-    inline size_type left(size_type i) {
+    static size_type left(size_type i) {
       return 2*i + 1;
     }
 
-    inline size_type right(size_type i) {
+    static size_type right(size_type i) {
       return 2*i + 2;
     }
 
-    inline size_type parent(size_type i) {
+    static size_type parent(size_type i) {
       return (i - 1)/2;
     }
 
